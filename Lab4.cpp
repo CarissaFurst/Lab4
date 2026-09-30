@@ -3,21 +3,68 @@
 using namespace std;
 
 int main() {
-    cout << "Food Name: ";
-    string FoodName;
-    getline(cin, FoodName);
+    cout << "\n--- Menu ---\n";
+    cout << left << setw(15) << "Drink" << setw(15) << "Small (S)" << right << setw(15) << "Medium (M)" << setw(15) << "Large (L)" << endl;
+    cout << string(60, '-') << endl;
+    cout << left << setw(15) << "Water (W)" << setw(15) << "$1.00" << right << setw(10) << "$1.50" << setw(16) << "$2.00" << endl;
+    cout << left << setw(15) << "Soda (S)" << setw(15) << "$2.00" << right << setw(10) << "$2.50" << setw(16) << "$3.00" << endl;
+    cout << left << setw(15) << "Coffee (C)" << setw(15) << "$1.50" << right << setw(10) << "$2.00" << setw(16) << "$2.50" << endl;
+    cout << left << setw(15) << "Tea (T)" << setw(15) << "$1.50" << right << setw(10) << "$2.00" << setw(16) << "$2.50" << endl;
+    cout << string(60, '-') << endl;
 
-    cout << "Item Code: ";
+    cout << "Please make an item selection: ";
+    string itemchoice;
+    cin >> itemchoice;
+
+    cout << "Please select a size (S/M/L): ";
+    string sizechoice;
+    cin >> sizechoice;
+
+    string FoodName;
     char ItemCode;
-    cin >> ItemCode;
+    double UnitPrice;
+    switch (itemchoice[0]) {
+        case 'W':
+            FoodName = "Water";
+            ItemCode = 'W';
+            switch (sizechoice[0]) {
+                case 'S': UnitPrice = 1.00; break;
+                case 'M': UnitPrice = 1.50; break;
+                case 'L': UnitPrice = 2.00; break;
+            }
+            break;
+        case 'S':
+            FoodName = "Soda";
+            ItemCode = 'S';
+            switch (sizechoice[0]) {
+                case 'S': UnitPrice = 2.00; break;
+                case 'M': UnitPrice = 2.50; break;
+                case 'L': UnitPrice = 3.00; break;
+            }
+            break;
+        case 'C':
+            FoodName = "Coffee";
+            ItemCode = 'C';
+            switch (sizechoice[0]) {
+                case 'S': UnitPrice = 1.50; break;
+                case 'M': UnitPrice = 2.00; break;
+                case 'L': UnitPrice = 2.50; break;
+            }
+            break;
+        case 'T':
+            FoodName = "Tea";
+            ItemCode = 'T';
+            switch (sizechoice[0]) {
+                case 'S': UnitPrice = 1.50; break;
+                case 'M': UnitPrice = 2.00; break;
+                case 'L': UnitPrice = 2.50; break;
+            }
+            break;
+    }
 
     cout << "Quantity: ";
     int Quantity;
     cin >> Quantity;
-
-    cout << "Unit Price: ";
-    double UnitPrice;
-    cin >> UnitPrice;
 
     cout << "Member? ";
     bool Member;
@@ -52,6 +99,7 @@ cout << left << setw(20) << FoodName;
 cout << setw(10) << ItemCode;
 cout << right << setw(10) << Quantity;
 cout << setw(12) << fixed << setprecision(2) << UnitPrice << endl;
+cout << string(52, '-') << endl;
 
 return 0;
 }
