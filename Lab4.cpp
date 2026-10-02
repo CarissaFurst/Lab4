@@ -76,6 +76,45 @@ int main() {
 }
 double afterDiscount = subtotal - discount;
 string cashierNote;
+const double ARKANSAS_TAX_RATE = 0.065;
+const double FAULKNER_TAX_RATE = 0.005;
+const double CONWAY_TAX_RATE = 0.02125;
+
+double arkansasTax = afterDiscount * ARKANSAS_TAX_RATE;
+double faulknerTax = afterDiscount * FAULKNER_TAX_RATE;
+double conwayTax = afterDiscount * CONWAY_TAX_RATE;
+double totalTax = arkansasTax + faulknerTax + conwayTax;
+double tipAmount = 0.0;
+int tipChoice;
+
+cout << fixed << setprecision(2);
+cout << "\n--- Tip Options ---\n";
+cout << "1. 15% ($" << afterDiscount * 0.15 << ")\n";
+cout << "2. 20% ($" << afterDiscount * 0.20 << ")\n";
+cout << "3. 25% ($" << afterDiscount * 0.25 << ")\n";
+cout << "4. Other Amount\n";
+cout << "Select an option (1-4): ";
+cin >> tipChoice;
+
+switch (tipChoice) {
+    case 1:
+        tipAmount = afterDiscount * 0.15;
+        break;
+    case 2:
+        tipAmount = afterDiscount * 0.20;
+        break;
+    case 3:
+        tipAmount = afterDiscount * 0.25;
+        break;
+    case 4:
+        cout << "Enter tip amount: $";
+        cin >> tipAmount;
+        break;
+    default:
+        cout << "Invalid option. No tip added.\n";
+}
+
+double total = afterDiscount + totalTax + tipAmount;
 cin.ignore();
 cout << "Cashier Note: ";
 getline(cin, cashierNote);
@@ -83,6 +122,18 @@ getline(cin, cashierNote);
 cout << left << setw(15) << "Subtotal:" <<fixed << setprecision(2) << subtotal << endl;
 cout << left << setw(15) << "Discount:" <<fixed<< setprecision(2) << discount << endl; 
 cout << left << setw(15) << "After Discount:" << fixed << setprecision(2) << afterDiscount << endl;
+cout << left << setw(25) << "Arkansas Tax (6.5%):"
+     << "$" << arkansasTax << endl;
+cout << left << setw(25) << "Faulkner Tax (0.5%):"
+     << "$" << faulknerTax << endl;
+cout << left << setw(25) << "Conway Tax (2.125%):"
+     << "$" << conwayTax << endl;
+cout << left << setw(25) << "Total Tax:"
+     << "$" << totalTax << endl;
+cout << left << setw(25) << "Tip:"
+     << "$" << tipAmount << endl;
+cout << left << setw(25) << "Total:"
+     << "$" << total << endl;
 cout << left << setw(15) << "Cashier Note:" << cashierNote << endl;
     cout << left << setw(15) << "Food Name: " << FoodName << endl;
     cout << left << setw(15) << "Item Code: " << ItemCode << endl;
